@@ -46,7 +46,10 @@
       command: /u01/app/oracle/product/11.2.0/db_1/bin/netca /silent /responseFile /software/database/response/netca.rsp
       become: yes
       become_user: oracle
-  
+    - name: create db
+      command: /u01/app/oracle/product/11.2.0/db_1/bin/dbca -silent -responseFile /software/database/response/dbca.rsp
+      become: yes
+      become_user: oracle
     
 
 
