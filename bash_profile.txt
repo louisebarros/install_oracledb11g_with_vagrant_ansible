@@ -1,0 +1,12 @@
+# Oracle Settings
+export ORACLE_HOSTNAME=oradb2.example.com
+export ORACLE_UNQNAME=ORA11G
+export ORACLE_BASE=/u01/app/oracle
+export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
+export ORACLE_SID=ORA11G
+
+PATH=/usr/sbin:$PATH:$ORACLE_HOME/bin
+
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib;
+export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib;
+

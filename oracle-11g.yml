@@ -1,0 +1,52 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: comandos linux
+      script: /vagrant/Proj11gNew/config_linux.sh
+    - name: Install list of packages
+      yum: name={{item}} state=installed
+      with_items:
+        - binutils-2*
+        - glibc-2*
+        - compat-libstdc++-33*
+        - glibc-common-2*
+        - elfutils-libelf-0*
+        - elfutils-libelf-devel-0*
+        - ksh-*
+        - libaio-devel-0*
+        - libaio-0*
+        - libaio-devel-0*
+        - libgcc-4*
+        - libstdc++-4*
+        - libstdc++-devel-4*
+        - make-3.81*
+        - sysstat-9*
+        - compat-libstdc++*
+        - kernel-headers-2*
+        - glibc-headers-2*
+        - glibc-devel-2*
+        - ppl*
+        - cloog-ppl*
+        - mpfr-2*
+        - cpp-4*
+        - gcc-4*
+        - gcc-c++-4*
+        - numactl-2*
+        - numactl-devel-2*
+        - unixODBC-*
+        - unzip
+    - name: install oracle
+      command: /bin/sh /software/database/runInstaller -silent -ignoreSysPrereqs -ignorePrereq -waitforcompletion -responseFile /software/database/response/db_install.rsp
+      become: yes
+      become_user: oracle
+    - name: script root
+      script: /vagrant/Proj11gNew/scripts_root.sh
+    - name: config netca
+      command: /u01/app/oracle/product/11.2.0/db_1/bin/netca /silent /responseFile /software/database/response/netca.rsp
+      become: yes
+      become_user: oracle
+  
+    
+
+
